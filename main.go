@@ -41,6 +41,21 @@ func main() {
 	if err != nil {
 		log.Fatalf("Error reading file %s: %v\n", *file, err)
 	}
+	if *bucket == "" {
+		log.Fatalf("Nonempty bucket value required\n")
+	}
+	if *key == "" {
+		log.Fatalf("Nonempty key value required\n")
+	}
+	if *file == "" {
+		log.Fatalf("Nonempty file value required\n")
+	}
+	if *awsKey == "" {
+		log.Fatalf("Nonempty access-key value required\n")
+	}
+	if *awsSecret == "" {
+		log.Fatalf("Nonempty access-secret value required\n")
+	}
 
 	config := aws.NewConfig().WithCredentials(credentials.NewStaticCredentials(*awsKey, *awsSecret, "")).WithRegion("us-west-1").WithMaxRetries(3)
 
