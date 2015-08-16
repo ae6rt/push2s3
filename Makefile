@@ -13,8 +13,8 @@ test:
 	echo godep go test
 
 binaries: test 
-	godep go build -ldflags "$(LD_FLAGS)" -o $(NAME)-darwin-$(ARCH)
-	godep go build -ldflags "$(LD_FLAGS)" -o $(NAME)-linux-$(ARCH)
+	CGO_ENABLED=0 godep go build -ldflags "$(LD_FLAGS)" -o $(NAME)-darwin-$(ARCH)
+	CGO_ENABLED=0 godep go build -ldflags "$(LD_FLAGS)" -o $(NAME)-linux-$(ARCH)
 
 clean: 
 	go clean
