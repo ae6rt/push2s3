@@ -14,7 +14,7 @@ test:
 
 binaries: test 
 	CGO_ENABLED=0 godep go build -ldflags "$(LD_FLAGS)" -o $(NAME)-darwin-$(ARCH)
-	CGO_ENABLED=0 godep go build -ldflags "$(LD_FLAGS)" -o $(NAME)-linux-$(ARCH)
+	CGO_ENABLED=0 GOOS=linux GOARCH=amd64 godep go build -ldflags "$(LD_FLAGS)" -o $(NAME)-linux-$(ARCH)
 
 clean: 
 	go clean
