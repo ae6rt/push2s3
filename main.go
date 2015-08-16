@@ -42,7 +42,7 @@ func main() {
 		log.Fatalf("Error reading file %s: %v\n", *file, err)
 	}
 
-	config := aws.NewConfig().WithCredentials(credentials.NewStaticCredentials(*awsKey, *awsSecret, "")).WithRegion("us-west-1")
+	config := aws.NewConfig().WithCredentials(credentials.NewStaticCredentials(*awsKey, *awsSecret, "")).WithRegion("us-west-1").WithMaxRetries(3)
 
 	params := &s3.PutObjectInput{
 		Key:    aws.String(*key),
