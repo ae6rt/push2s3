@@ -1,5 +1,5 @@
 
-NAME := app
+NAME := push2s3
 ARCH := amd64
 VERSION := 1.0
 DATE := $(shell date)
@@ -10,11 +10,11 @@ LD_FLAGS := -X main.buildInfo 'Version: $(VERSION), commitID: $(COMMIT_ID), buil
 all: clean binaries 
 
 test:
-	godep test
+	echo godep go test
 
 binaries: test 
-	godep build -ldflags "$(LD_FLAGS)" -o $(NAME)-darwin-$(ARCH)
-	godep build -ldflags "$(LD_FLAGS)" -o $(NAME)-linux-$(ARCH)
+	godep go build -ldflags "$(LD_FLAGS)" -o $(NAME)-darwin-$(ARCH)
+	godep go build -ldflags "$(LD_FLAGS)" -o $(NAME)-linux-$(ARCH)
 
 clean: 
 	go clean
