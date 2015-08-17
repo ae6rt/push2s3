@@ -8,6 +8,7 @@ import (
 	"os"
 
 	"fmt"
+
 	"github.com/aws/aws-sdk-go/aws"
 	"github.com/aws/aws-sdk-go/aws/awserr"
 	"github.com/aws/aws-sdk-go/aws/awsutil"
@@ -114,23 +115,23 @@ func main() {
 		svc := dynamodb.New(config)
 		params := &dynamodb.PutItemInput{
 			Item: map[string]*dynamodb.AttributeValue{
-				"build-id": {
+				"buildID": {
 					S: aws.String(*buildID),
 				},
-				"build-time": {
+				"buildTime": {
 					N: aws.String(fmt.Sprintf("%d", *buildTime)),
 				},
-				"project-key": {
+				"projectKey": {
 					S: aws.String(*projectKey),
 				},
-				"build-elapsed-time": {
+				"buildElapsedTime": {
 					N: aws.String(fmt.Sprintf("%d", *buildDuration)),
 				},
-				"build-status": {
+				"buildStatus": {
 					BOOL: aws.Bool(*buildStatus),
 				},
 			},
-			TableName: aws.String("inf-eng-build-server"),
+			TableName: aws.String("inf-eng-build-server-2"),
 		}
 		resp, err := svc.PutItem(params)
 
