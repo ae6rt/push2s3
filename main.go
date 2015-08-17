@@ -15,6 +15,7 @@ import (
 	"github.com/aws/aws-sdk-go/aws/credentials"
 	"github.com/aws/aws-sdk-go/service/dynamodb"
 	"github.com/aws/aws-sdk-go/service/s3"
+	"strings"
 )
 
 var (
@@ -122,7 +123,7 @@ func main() {
 					N: aws.String(fmt.Sprintf("%d", *buildTime)),
 				},
 				"projectKey": {
-					S: aws.String(*projectKey),
+					S: aws.String(strings.ToLower(*projectKey)),
 				},
 				"buildElapsedTime": {
 					N: aws.String(fmt.Sprintf("%d", *buildDuration)),
