@@ -1,5 +1,5 @@
 
-NAME := push2s3
+NAME := s3dynamo
 ARCH := amd64
 VERSION := 1.0
 DATE := $(shell date)
